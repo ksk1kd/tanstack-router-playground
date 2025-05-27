@@ -13,8 +13,8 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as AboutImport } from './routes/about'
 import { Route as IndexImport } from './routes/index'
-import { Route as PostsIndexImport } from './routes/posts.index'
-import { Route as PostsPostIdImport } from './routes/posts.$postId'
+import { Route as PostsIndexImport } from './routes/posts/index'
+import { Route as PostsPostIdImport } from './routes/posts/$postId'
 
 // Create/Update Routes
 
@@ -147,10 +147,10 @@ export const routeTree = rootRoute
       "filePath": "about.tsx"
     },
     "/posts/$postId": {
-      "filePath": "posts.$postId.tsx"
+      "filePath": "posts/$postId.tsx"
     },
     "/posts/": {
-      "filePath": "posts.index.tsx"
+      "filePath": "posts/index.tsx"
     }
   }
 }
