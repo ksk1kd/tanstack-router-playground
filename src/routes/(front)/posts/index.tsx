@@ -1,9 +1,11 @@
 import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/(front)/posts/')({
-  component: PostsIndexComponent,
+  loader: fetchPosts,
 })
 
-function PostsIndexComponent() {
-  return <div>Please select a post!</div>
+function fetchPosts() {
+  return {
+    foo: 'bar',
+  } 
 }

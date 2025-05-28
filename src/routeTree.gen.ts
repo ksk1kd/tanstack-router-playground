@@ -30,11 +30,13 @@ const IndexRoute = IndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const frontPostsIndexRoute = frontPostsIndexImport.update({
-  id: '/(front)/posts/',
-  path: '/posts/',
-  getParentRoute: () => rootRoute,
-} as any)
+const frontPostsIndexRoute = frontPostsIndexImport
+  .update({
+    id: '/(front)/posts/',
+    path: '/posts/',
+    getParentRoute: () => rootRoute,
+  } as any)
+  .lazy(() => import('./routes/(front)/posts/index.lazy').then((d) => d.Route))
 
 const frontPostsPostIdRoute = frontPostsPostIdImport.update({
   id: '/(front)/posts/$postId',
