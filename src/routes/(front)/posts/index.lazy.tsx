@@ -26,6 +26,14 @@ function RouteComponent() {
           </li>
         ))}
       </ul>
+      <div>
+        <Link
+          to="."
+          search={(prev) => ({ ...prev, page: (prev.page ?? 0) + 1 })}
+          className="[&.active]:font-bold">
+          Next
+        </Link>
+      </div>
     </>
   )
 }
