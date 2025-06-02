@@ -1,11 +1,11 @@
-import { createLazyFileRoute, Link } from '@tanstack/react-router'
+import { Link, createLazyFileRoute } from '@tanstack/react-router'
 
 export const Route = createLazyFileRoute('/(front)/posts/')({
   component: RouteComponent,
 })
 
 function RouteComponent() {
-  const { foo } = Route.useLoaderData()
+  const { foo, page } = Route.useLoaderData()
 
   return (
     <>
@@ -26,11 +26,13 @@ function RouteComponent() {
           </li>
         ))}
       </ul>
+      <p>Page Number: {page}</p>
       <div>
         <Link
           to="."
           search={(prev) => ({ ...prev, page: (prev.page ?? 0) + 1 })}
-          className="[&.active]:font-bold">
+          className="[&.active]:font-bold"
+        >
           Next
         </Link>
       </div>

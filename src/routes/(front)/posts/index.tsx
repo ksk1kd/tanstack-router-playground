@@ -7,11 +7,13 @@ const productSearchSchema = z.object({
 
 export const Route = createFileRoute('/(front)/posts/')({
   validateSearch: (search) => productSearchSchema.parse(search),
-  loader: fetchPosts,
+  loaderDeps: ({ search: { page } }) => ({ page }),
+  loader: ({ deps: { page } }) => fetchPosts({ page }),
 })
 
-function fetchPosts() {
+function fetchPosts({ page }: { page: number }) {
   return {
     foo: 'bar',
-  } 
+    page,
+  }
 }
