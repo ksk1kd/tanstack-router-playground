@@ -5,23 +5,23 @@ export const Route = createLazyFileRoute('/(front)/posts/')({
 })
 
 function RouteComponent() {
-  const { foo, page } = Route.useLoaderData()
+  const { foo, posts, page } = Route.useLoaderData()
 
   return (
     <>
       <h1>Posts</h1>
       <div>foo: {foo}</div>
       <ul>
-        {Array.from({ length: 10 }, (_, i) => i + 1).map((id) => (
-          <li key={id}>
+        {posts.map((post) => (
+          <li key={post.id}>
             <Link
               to="/posts/$postId"
               params={{
-                postId: id.toString(),
+                postId: post.id,
               }}
               className="[&.active]:font-bold"
             >
-              Post {id}
+              Post {post.id}
             </Link>{' '}
           </li>
         ))}

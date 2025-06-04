@@ -1,6 +1,12 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { z } from 'zod'
 
+interface Post {
+  id: string
+  title: string
+  content: string
+}
+
 const productSearchSchema = z.object({
   page: z.number().catch(1),
 })
@@ -11,9 +17,16 @@ export const Route = createFileRoute('/(front)/posts/')({
   loader: ({ deps: { page } }) => fetchPosts({ page }),
 })
 
-function fetchPosts({ page }: { page: number }) {
+async function fetchPosts({ page }: { page: number }) {
+  const posts: Post[] = Array.from({ length: 10 }, (_, i) => ({
+    id: `${i + 1}`,
+    title: `Post ${i + 1}`,
+    content: `Post ${i + 1} Content`,
+  }))
+
   return {
     foo: 'bar',
+    posts,
     page,
   }
 }
