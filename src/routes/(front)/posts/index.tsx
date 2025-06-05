@@ -15,6 +15,13 @@ export const Route = createFileRoute('/(front)/posts/')({
   validateSearch: (search) => productSearchSchema.parse(search),
   loaderDeps: ({ search: { page } }) => ({ page }),
   loader: ({ deps: { page } }) => fetchPosts({ page }),
+  head: () => ({
+    meta: [
+      {
+        title: 'Posts | TanStack Router Playground',
+      },
+    ],
+  }),
 })
 
 async function fetchPosts({ page }: { page: number }) {
